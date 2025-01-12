@@ -1,24 +1,28 @@
-# Create an empty list
-my_list = []
+def calculate_discount(price, discount_percent):
+    """
+    Calculate the final price after applying a discount.
+    If the discount is 20% or higher, apply the discount.
+    Otherwise, return the original price.
+    """
+    if discount_percent >= 20:
+        discount_amount = price * (discount_percent / 100)
+        final_price = price - discount_amount
+        return final_price
+    else:
+        return price
 
-# Append elements to the list
-my_list.append(10)
-my_list.append(20)
-my_list.append(30)
-my_list.append(40)
+# Prompt the user for input
+try:
+    original_price = float(input("Enter the original price of the item: "))
+    discount_percentage = float(input("Enter the discount percentage: "))
 
-# Insert 15 at the second position
-my_list.insert(1, 15)
+    # Calculate the final price using the function
+    final_price = calculate_discount(original_price, discount_percentage)
 
-# Extend the list with another list
-my_list.extend([50,60,70])
-
-# Remove the last element
-my_list.pop()
-
-# Sort the list in ascending order
-my_list.sort()
-
-# Find and print the index of the value 30
-index_of_30 = my_list.index(30)
-print(f"The index of 30 in the list is: {index_of_30}")
+    # Print the result
+    if final_price < original_price:
+        print(f"The final price after applying the discount is: {final_price:.2f}")
+    else:
+        print(f"No discount applied. The original price is: {original_price:.2f}")
+except ValueError:
+    print("Please enter valid numbers for the price and discount percentage.")
